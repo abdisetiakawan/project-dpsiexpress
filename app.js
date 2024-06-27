@@ -1,14 +1,21 @@
+// Moduls
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
+
+// Router
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 var categoriesRouter = require('./routes/categories')
 var authRouter = require('./routes/auth')
-var sequelize = require('./models/index')
+
+
+
+const sequelize = require('./models/index');
 
 var app = express();
 

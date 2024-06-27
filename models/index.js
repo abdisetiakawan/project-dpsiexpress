@@ -3,6 +3,7 @@ const sequelize = new Sequelize('project', 'root', '', {
     host: 'localhost',
     dialect: 'mysql',
 });
+// Instasi
 const Customer = require('./customer')(sequelize, Sequelize.DataTypes)
 const Employee = require('./employee')(sequelize, Sequelize.DataTypes)
 const Product = require('./product')(sequelize, Sequelize.DataTypes)

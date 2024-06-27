@@ -11,12 +11,10 @@ router.post('/register', async (req, res, next) => {
         if (!username || !password || !role) {
             return res.status(400).json({ message: 'Please provide username, password, and role' });
         }
-
         const existingUser = await User.findOne({ where: { username } });
         if (existingUser) {
             return res.status(400).json({ message: 'Username already exists' });
         }
-
         const newUser = await User.create({ username, password, role });
         res.status(201).json({ message: 'User registered successfully', user: { id: newUser.id, username: newUser.username, role: newUser.role } });
     } catch (err) {
@@ -34,12 +32,12 @@ router.post('/login', async (req, res, next) => {
 
         const user = await User.findOne({ where: { username } });
         if (!user) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+            return res.status(401).json({ message: 'Invalid Username credentials' });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+            return res.status(401).json({ message: 'Invalid Password credentials' });
         }
 
         const token = jwt.sign(

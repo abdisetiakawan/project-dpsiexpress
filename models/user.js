@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('./index');
 const bcrypt = require('bcryptjs');
+
 const User = sequelize.define('User', {
  username: {
  type: DataTypes.STRING,
